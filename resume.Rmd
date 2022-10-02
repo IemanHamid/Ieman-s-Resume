@@ -1,0 +1,158 @@
+---
+title: Ieman's Resume"
+author: Ieman Elsadig
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    css: ['css/custom_resume.css', 'css/styles.css', 'resume']
+    # set it to true for a self-contained HTML page but it'll take longer to render
+    self_contained: true
+---
+
+
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+library(tidyverse)
+library(glue)
+library( pagedown )
+library( pander )
+
+# Set this to true to have links turned into footnotes at the end of the document
+PDF_EXPORT <- FALSE
+
+# Holds all the links that were inserted for placement at the end
+links <- c()
+
+source('parsing_functions.R')
+
+
+# First let's get the data, filtering to only the items tagged as
+# Resume items
+position_data <- read_csv('positions.csv') %>% 
+  filter(in_resume) %>% 
+  mutate(
+    # Build some custom sections by collapsing others
+    section = case_when(
+      section %in% c('research_positions', 'industry_positions') ~ 'positions', 
+      section %in% c('data_science_writings', 'by_me_press') ~ 'writings',
+      section %in% c('certificates', 'by_me_press') ~ 'certificates',
+      TRUE ~ section
+    )
+  ) 
+
+```
+
+
+Aside
+================================================================================
+
+
+![logo](watss_logo.png){width=100%}
+
+Contact {#contact}
+--------------------------------------------------------------------------------
+
+
+
+- <i class="fa fa-envelope"></i> immohame@asu.edu
+- <i class="fa fa-github"></i> github.com/IemanHamid
+- <i class="fa fa-phone"></i> (012) 3456789
+
+
+
+Language Skills {#skills}
+--------------------------------------------------------------------------------
+
+
+```{r}
+skills <- tribble(
+  ~skill,               ~level,
+  "R",                  2,
+  "SQL",                3,
+  "Python",             3,
+  "Tableau",            3.5,
+  "Power BI",           2,
+  "C++",                3,
+  "Excel",              3
+)
+build_skill_bars(skills)
+```
+
+
+
+Open Source Contributions {#open-source}
+--------------------------------------------------------------------------------
+
+All projects available at `github.com/nstrayer/<name>`
+
+
+- `shinysense`: R package to use sensor data in Shiny apps
+- `tuftesque`: Hugo theme (behind LiveFreeOrDichotomize.com)
+- `slid3r`: D3 add-on for fully svg slider inputs
+
+
+More info {#more-info}
+--------------------------------------------------------------------------------
+
+See full CV at nickstrayer.me/cv for more complete list of positions and publications.
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Made w/ [**pagedown**](https://github.com/rstudio/pagedown). 
+
+Source code: [github.com/nstrayer/cv](https://github.com/nstrayer/cv).
+
+Last updated on `r Sys.Date()`.
+
+
+
+
+Main
+================================================================================
+
+Ieman Elsadig {#title}
+--------------------------------------------------------------------------------
+
+```{r}
+intro_text <- "This is a test cv for for the [PEDA program](https://asuonline.asu.edu/online-degree-programs/graduate/program-evaluation-and-data-analytics-ms/), And here you can find my [linkedin profile](https://www.linkedin.com/in/ieman-elsadig-6042a3a8/).
+
+Currently searching for a data science position that allows me to build tools using visualization and machine learning to help people explore and understand their data. 
+"
+
+
+cat(sanitize_links(intro_text))
+```
+
+
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+position_data %>% print_section('education')
+```
+
+
+
+Positions {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+```{r}
+position_data %>% print_section('positions')
+```
+
+Certificates {data-icon=newspaper}
+--------------------------------------------------------------------------------
+
+
+```{r}
+position_data %>% print_section('certificates')
+```
+
+
