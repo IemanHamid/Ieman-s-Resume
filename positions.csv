@@ -1,0 +1,8 @@
+section,in_resume,title,institution,loc,start,end,description_1,description_2,description_3
+education,TRUE,Msc. Program Evaluation & Data Analytics ,Arizona State University ,NA,2021,2023,NA,NA,NA
+education,TRUE,Bsc. Electrical & Electronics Engineering ,University of Sharjah,NA,2013,2017,NA,NA,NA
+industry_positions,TRUE,AI & Robotics Trainer,Etisalat Academy,"Dubai, UAE",2018,2022,"I work with Etisalat Academy as a freelancer for their TDRA camps, I mainly teach students the basics of AI and Robotics programming.",NA,NA
+industry_positions,TRUE,Sales & Operations intern,Wood Culture,"Dubai, UAE",2021,2022,"Supporting the marketing, sales, logistics, and warehouse with their daily operations and preparing reports accordingly.",Testing the new Odoo integration for the whole cycle & preparing training for the team and follow up with Odoo consultancy accordingly.,NA
+teaching_positions,TRUE,AI & Robotics Trainer,Etisalat Academy,"Dubai, UAE",2018,2022,"I work with Etisalat Academy as a freelancer for their TDRA camps, I mainly teach students the basics of AI and Robotics programming.",NA,NA
+certificates,TRUE,Nanodegree. Business Analytics,Udacity,NA,NA,2022,NA,NA,NA
+certificates,TRUE,Nanodegree. AI Programming with Python,Udacity,NA,NA,2022,NA,NA,NA
